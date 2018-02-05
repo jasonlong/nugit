@@ -1,0 +1,34 @@
+pre {
+  @extend .pre;
+  @extend .code;
+  @extend .bg-white-50;
+  @extend .pa3;
+  @extend .dark-gray;
+  @extend .br2;
+}
+
+code {
+  @extend .code;
+  @extend .b;
+}
+
+.sect1 {
+  a {
+    @extend .blue;
+  }
+
+  h2 {
+    @extend .f4;
+    @extend .orange;
+    @extend .fw5;
+  }
+
+  .sectionbody {
+    @extend .mb4;
+  }
+
+  .hdlist1 {
+    @extend .code;
+    @extend .b;
+  }
+}
