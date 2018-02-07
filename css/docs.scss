@@ -23,6 +23,10 @@ code {
     @extend .fw5;
   }
 
+  p {
+    @extend .lh-copy;
+  }
+
   .sectionbody {
     @extend .mb4;
   }
