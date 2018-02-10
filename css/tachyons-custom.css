@@ -46,3 +46,10 @@ it is focused or hovered over.
 
 .hover-b-orange:focus { border-color: #ff6300; }
 .hover-shadow-orange:focus { box-shadow: 0 0 0 3px rgba(255,99,0,.3); }
+
+/*
+ *
+ * FONTS
+ *
+ */
+code, .code { font-family: "SFMono-Regular", Consolas, Menlo, Andale, monospace; }

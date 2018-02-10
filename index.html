@@ -10,31 +10,45 @@
     <link rel="stylesheet" href="/dist/index.css">
   </head>
 
-  <body class="sans-serif bg-tan dark-gray ph3 ph4-m ph5-l">
-    <header class="dt pv3 pv3-l v-mid w-100">
-      <div class="pr3 dtc">
-	<img src="/img/git-logo-full.svg" width="110">
-      </div>
-      <nav class="dtc v-mid tr f5 fw5">
-	<ul class="list pl0">
-	  <li class="di"><a href="#" class="link near-black hover-blue pa2">About</a></li>
-	  <li class="di"><a href="#" class="link near-black hover-blue pa2">Documentation</a></li>
-	  <li class="di"><a href="#" class="link near-black hover-blue pa2">Downloads</a></li>
-	  <li class="di"><a href="#" class="link near-black hover-blue pa2">Community</a></li>
-	  <li class="di dn-l v-mid">
-            <a href="#" class="link near-black hover-blue pa2 v-mid">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            </a>
-          </li>
-	</ul>
-      </nav>
-      <div class="dtc-l dn pl3 tr v-mid pv-0">
-	<input type="text" class="outline-0 pv1 ph2 br2 ba b--moon-gray hover-b-orange hover-shadow-orange w-100" placeholder="Search...">
+  <body class="sans-serif bg-tan dark-gray">
+    <header class="flex flex-column flex-row-l pv3 pv3-l ph3 ph4-ns mb4 v-mid w-100 bb bb-0-l b--moon-gray">
+      <div class="flex flex-row justify-between items-center w-100">
+        <div class="tc tl-l tl-m pr3-l order-1 order-0-l w4">
+          <img src="/img/git-logo-full.svg" class="w-75 w-100-l">
+        </div>
+        <nav class="v-mid f5 fw5 order-0 order-1-l">
+          <a href="#" class="link near-black hover-blue v-mid order-2 dn-l">
+            <!-- Menu icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </a>
+
+          <ul class="list pl0 dn db-l tr">
+            <li class="dib">
+              <a href="#" class="link near-black hover-blue pa2">About</a>
+            </li>
+            <li class="dib">
+              <a href="#" class="link near-black hover-blue pa2">Documentation</a>
+            </li>
+            <li class="dib">
+              <a href="#" class="link near-black hover-blue pa2">Downloads</a>
+            </li>
+            <li class="dib">
+              <a href="#" class="link near-black hover-blue pa2">Community</a>
+            </li>
+          </ul>
+        </nav>
+        <a href="#" class="link near-black hover-blue v-mid order-2 tr dn-l">
+          <!-- Search icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        <div class="v-mid pv-0 order-3 ml2 dn db-l w-25">
+          <input type="text" class="outline-0 pv1 ph2 br2 ba b--moon-gray hover-b-orange hover-shadow-orange w-100" placeholder="Search…">
+        </div>
       </div>
     </header>
 
     <!-- MAIN CONTENT ---------------------->
-    <div class="">
+    <div class="ph3 ph4-ns">
 
       <div class="sect1">
 	<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
