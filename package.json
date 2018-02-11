@@ -9,6 +9,9 @@
     "url": "https://github.com/git/git-scm.com"
   },
   "bugs": "https://github.com/git/git-scm.com/issues",
+  "now": {
+    "alias": "nugit"
+  },
   "scripts": {
     "clean": "rimraf dist/{css/*,js/*}",
     "scss": "node-sass --output-style compressed -o dist css/index.scss",
