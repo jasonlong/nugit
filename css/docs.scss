@@ -24,14 +24,11 @@ code {
     @extend .f4;
     @extend .orange;
     @extend .fw5;
+    @extend .lh-copy;
   }
 
   p {
     @extend .lh-copy;
-  }
-
-  .sectionbody {
-    @extend .mb4;
   }
 
   .hdlist1 {

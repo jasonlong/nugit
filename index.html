@@ -7,10 +7,11 @@
     <meta name="author" content="Jason Long">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
     <link rel="stylesheet" href="/dist/index.css">
   </head>
 
-  <body class="sans-serif bg-tan dark-gray">
+  <body class="sans-serif bg-tan dark-gray mw9 center">
     <header class="flex flex-column flex-row-l pv3 pv3-l ph3 ph4-ns mb4 v-mid w-100 bb bb-0-l b--moon-gray">
       <div class="flex flex-row justify-between items-center w-100">
         <div class="tc tl-l tl-m pr3-l order-1 order-0-l w4">
@@ -28,6 +29,9 @@
             </li>
             <li class="dib">
               <a href="#" class="link near-black hover-blue pa2">Documentation</a>
+            </li>
+            <li class="dib">
+              <a href="#" class="link near-black hover-blue pa2">Book</a>
             </li>
             <li class="dib">
               <a href="#" class="link near-black hover-blue pa2">Downloads</a>
@@ -48,254 +52,398 @@
     </header>
 
     <!-- MAIN CONTENT ---------------------->
-    <div class="ph3 ph4-ns">
+    <div class="flex ph3 ph4-ns">
 
-      <div class="sect1">
-	<h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
-	<div class="sectionbody">
-	  <div class="paragraph">
-	    <p>git-shortlog - Summarize <em>git log</em> output</p>
-	  </div>
-	</div>
-      </div>
-      <div class="sect1">
-	<h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
-	<div class="sectionbody">
-	  <div class="verseblock">
-	    <pre class="content">git log --pretty=short | <em>git shortlog</em> [&lt;options&gt;]
-	  <em>git shortlog</em> [&lt;options&gt;] [&lt;revision range&gt;] [[\--] &lt;path&gt;…​]</pre>
-	  </div>
-	</div>
-      </div>
-      <div class="sect1">
-	<h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
-	<div class="sectionbody">
-	  <div class="paragraph">
-	    <p>Summarizes <em>git log</em> output in a format suitable for inclusion
-	    in release announcements. Each commit will be grouped by author and title.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>Additionally, "[PATCH]" will be stripped from the commit description.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>If no revisions are passed on the command line and either standard input
-	    is not a terminal or there is no current branch, <em>git shortlog</em> will
-	    output a summary of the log read from standard input, without
-	    reference to the current repository.</p>
-	  </div>
-	</div>
-      </div>
-      <div class="sect1">
-	<h2 id="_options"><a class="anchor" href="#_options"></a>OPTIONS</h2>
-	<div class="sectionbody">
-	  <div class="dlist">
-	    <dl>
-	      <dt class="hdlist1" id="git-shortlog--n"> <a class="anchor" href="#git-shortlog--n"></a>-n </dt>
-	      <dt class="hdlist1" id="git-shortlog---numbered"> <a class="anchor" href="#git-shortlog---numbered"></a>--numbered </dt>
-	      <dd>
-	      <p>Sort output according to the number of commits per author instead
-	      of author alphabetic order.</p>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog--s"> <a class="anchor" href="#git-shortlog--s"></a>-s </dt>
-	      <dt class="hdlist1" id="git-shortlog---summary"> <a class="anchor" href="#git-shortlog---summary"></a>--summary </dt>
-	      <dd>
-	      <p>Suppress commit description and provide a commit count summary only.</p>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog--e"> <a class="anchor" href="#git-shortlog--e"></a>-e </dt>
-	      <dt class="hdlist1" id="git-shortlog---email"> <a class="anchor" href="#git-shortlog---email"></a>--email </dt>
-	      <dd>
-	      <p>Show the email address of each author.</p>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog---formatltformatgt"> <a class="anchor" href="#git-shortlog---formatltformatgt"></a>--format[=&lt;format&gt;] </dt>
-	      <dd>
-	      <p>Instead of the commit subject, use some other information to
-	      describe each commit.  <em>&lt;format&gt;</em> can be any string accepted
-	      by the <code>--format</code> option of <em>git log</em>, such as <em>* [%h] %s</em>.
-	      (See the "PRETTY FORMATS" section of <a href="/docs/git-log">git-log[1]</a>.)</p>
-	      <div class="literalblock">
-		<div class="content">
-		  <pre>Each pretty-printed commit will be rewrapped before it is shown.</pre>
-		</div>
-	      </div>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog--c"> <a class="anchor" href="#git-shortlog--c"></a>-c </dt>
-	      <dt class="hdlist1" id="git-shortlog---committer"> <a class="anchor" href="#git-shortlog---committer"></a>--committer </dt>
-	      <dd>
-	      <p>Collect and show committer identities instead of authors.</p>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog--wltwidthgtltindent1gtltindent2gt"> <a class="anchor" href="#git-shortlog--wltwidthgtltindent1gtltindent2gt"></a>-w[&lt;width&gt;[,&lt;indent1&gt;[,&lt;indent2&gt;]]] </dt>
-	      <dd>
-	      <p>Linewrap the output by wrapping each line at <code>width</code>.  The first
-	      line of each entry is indented by <code>indent1</code> spaces, and the second
-	      and subsequent lines are indented by <code>indent2</code> spaces. <code>width</code>,
-	      <code>indent1</code>, and <code>indent2</code> default to 76, 6 and 9 respectively.</p>
-	      <div class="paragraph">
-		<p>If width is <code>0</code> (zero) then indent the lines of the output without wrapping
-		them.</p>
-	      </div>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog-ltrevisionrangegt"> <a class="anchor" href="#git-shortlog-ltrevisionrangegt"></a>&lt;revision range&gt; </dt>
-	      <dd>
-	      <p>Show only commits in the specified revision range.  When no
-	      &lt;revision range&gt; is specified, it defaults to <code>HEAD</code> (i.e. the
-	      whole history leading to the current commit).  <code>origin..HEAD</code>
-	      specifies all the commits reachable from the current commit
-	      (i.e. <code>HEAD</code>), but not from <code>origin</code>. For a complete list of
-	      ways to spell &lt;revision range&gt;, see the "Specifying Ranges"
-	      section of <a href="/docs/gitrevisions">gitrevisions[7]</a>.</p>
-	      </dd>
-	      <dt class="hdlist1" id="git-shortlog---ltpathgt82308203"> <a class="anchor" href="#git-shortlog---ltpathgt82308203"></a>[\--] &lt;path&gt;…​ </dt>
-	      <dd>
-	      <p>Consider only commits that are enough to explain how the files
-	      that match the specified paths came to be.</p>
-	      <div class="paragraph">
-		<p>Paths may need to be prefixed with "-- " to separate them from
-		options or the revision range, when confusion arises.</p>
-	      </div>
-	      </dd>
-	    </dl>
-	  </div>
-	</div>
-      </div>
-      <div class="sect1">
-	<h2 id="_mapping_authors"><a class="anchor" href="#_mapping_authors"></a>MAPPING AUTHORS</h2>
-	<div class="sectionbody">
-	  <div class="paragraph">
-	    <p>The <code>.mailmap</code> feature is used to coalesce together commits by the same
-	    person in the shortlog, where their name and/or email address was
-	    spelled differently.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>If the file <code>.mailmap</code> exists at the toplevel of the repository, or at
-	    the location pointed to by the mailmap.file or mailmap.blob
-	    configuration options, it
-	    is used to map author and committer names and email addresses to
-	    canonical real names and email addresses.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>In the simple form, each line in the file consists of the canonical
-	    real name of an author, whitespace, and an email address used in the
-	    commit (enclosed by <em>&lt;</em> and <em>&gt;</em>) to map to the name. For example:</p>
-	  </div>
-	  <div class="openblock">
-	    <div class="content">
-	      <div class="literalblock">
-		<div class="content">
-		  <pre>Proper Name &lt;commit@email.xx&gt;</pre>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>The more complex forms are:</p>
-	  </div>
-	  <div class="openblock">
-	    <div class="content">
-	      <div class="literalblock">
-		<div class="content">
-		  <pre>&lt;proper@email.xx&gt; &lt;commit@email.xx&gt;</pre>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>which allows mailmap to replace only the email part of a commit, and:</p>
-	  </div>
-	  <div class="openblock">
-	    <div class="content">
-	      <div class="literalblock">
-		<div class="content">
-		  <pre>Proper Name &lt;proper@email.xx&gt; &lt;commit@email.xx&gt;</pre>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>which allows mailmap to replace both the name and the email of a
-	    commit matching the specified commit email address, and:</p>
-	  </div>
-	  <div class="openblock">
-	    <div class="content">
-	      <div class="literalblock">
-		<div class="content">
-		  <pre>Proper Name &lt;proper@email.xx&gt; Commit Name &lt;commit@email.xx&gt;</pre>
-		</div>
-	      </div>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>which allows mailmap to replace both the name and the email of a
-	    commit matching both the specified commit name and email address.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>Example 1: Your history contains commits by two authors, Jane
-	    and Joe, whose names appear in the repository under several forms:</p>
-	  </div>
-	  <div class="listingblock">
-	    <div class="content">
-	      <pre>Joe Developer &lt;joe@example.com&gt;
-	  Joe R. Developer &lt;joe@example.com&gt;
-	  Jane Doe &lt;jane@example.com&gt;
-	  Jane Doe &lt;jane@laptop.(none)&gt;
-	  Jane D. &lt;jane@desktop.(none)&gt;</pre>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>Now suppose that Joe wants his middle name initial used, and Jane
-	    prefers her family name fully spelled out. A proper <code>.mailmap</code> file
-	    would look like:</p>
-	  </div>
-	  <div class="listingblock">
-	    <div class="content">
-	      <pre>Jane Doe         &lt;jane@desktop.(none)&gt;
-	  Joe R. Developer &lt;joe@example.com&gt;</pre>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>Note how there is no need for an entry for <code>&lt;jane@laptop.(none)&gt;</code>, because the
-	    real name of that author is already correct.</p>
-	  </div>
-	  <div class="paragraph">
-	    <p>Example 2: Your repository contains commits from the following
-	    authors:</p>
-	  </div>
-	  <div class="listingblock">
-	    <div class="content">
-	      <pre>nick1 &lt;bugs@company.xx&gt;
-	  nick2 &lt;bugs@company.xx&gt;
-	  nick2 &lt;nick2@company.xx&gt;
-	  santa &lt;me@company.xx&gt;
-	  claus &lt;me@company.xx&gt;
-	  CTO &lt;cto@coompany.xx&gt;</pre>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>Then you might want a <code>.mailmap</code> file that looks like:</p>
-	  </div>
-	  <div class="listingblock">
-	    <div class="content">
-	      <pre>&lt;cto@company.xx&gt;                       &lt;cto@coompany.xx&gt;
-	  Some Dude &lt;some@dude.xx&gt;         nick1 &lt;bugs@company.xx&gt;
-	  Other Author &lt;other@author.xx&gt;   nick2 &lt;bugs@company.xx&gt;
-	  Other Author &lt;other@author.xx&gt;         &lt;nick2@company.xx&gt;
-	  Santa Claus &lt;santa.claus@northpole.xx&gt; &lt;me@company.xx&gt;</pre>
-	    </div>
-	  </div>
-	  <div class="paragraph">
-	    <p>Use hash <em>#</em> for comments that are either on their own line, or after
-	    the email address.</p>
-	  </div>
-	</div>
-      </div>
-      <div class="sect1">
-	<h2 id="_git"><a class="anchor" href="#_git"></a>GIT</h2>
-	<div class="sectionbody">
-	  <div class="paragraph">
-	    <p>Part of the <a href="/docs/git">git[1]</a> suite</p>
-	  </div>
-	</div>
+      <div class="w-100 w-75-l pr0 pr5-l">
+
+        <div class="sect1">
+          <h2 id="_name"><a class="anchor" href="#_name"></a>NAME</h2>
+          <div class="sectionbody">
+            <div class="paragraph">
+              <p>git-shortlog - Summarize <em>git log</em> output</p>
+            </div>
+          </div>
+        </div>
+        <div class="sect1">
+          <h2 id="_synopsis"><a class="anchor" href="#_synopsis"></a>SYNOPSIS</h2>
+          <div class="sectionbody">
+            <div class="verseblock">
+              <pre class="content">git log --pretty=short | <em>git shortlog</em> [&lt;options&gt;]
+            <em>git shortlog</em> [&lt;options&gt;] [&lt;revision range&gt;] [[\--] &lt;path&gt;…​]</pre>
+            </div>
+          </div>
+        </div>
+        <div class="sect1">
+          <h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
+          <div class="sectionbody">
+            <div class="paragraph">
+              <p>Summarizes <em>git log</em> output in a format suitable for inclusion
+              in release announcements. Each commit will be grouped by author and title.</p>
+            </div>
+            <div class="paragraph">
+              <p>Additionally, "[PATCH]" will be stripped from the commit description.</p>
+            </div>
+            <div class="paragraph">
+              <p>If no revisions are passed on the command line and either standard input
+              is not a terminal or there is no current branch, <em>git shortlog</em> will
+              output a summary of the log read from standard input, without
+              reference to the current repository.</p>
+            </div>
+          </div>
+        </div>
+        <div class="sect1">
+          <h2 id="_options"><a class="anchor" href="#_options"></a>OPTIONS</h2>
+          <div class="sectionbody">
+            <div class="dlist">
+              <dl>
+                <dt class="hdlist1" id="git-shortlog--n"> <a class="anchor" href="#git-shortlog--n"></a>-n </dt>
+                <dt class="hdlist1" id="git-shortlog---numbered"> <a class="anchor" href="#git-shortlog---numbered"></a>--numbered </dt>
+                <dd>
+                <p>Sort output according to the number of commits per author instead
+                of author alphabetic order.</p>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog--s"> <a class="anchor" href="#git-shortlog--s"></a>-s </dt>
+                <dt class="hdlist1" id="git-shortlog---summary"> <a class="anchor" href="#git-shortlog---summary"></a>--summary </dt>
+                <dd>
+                <p>Suppress commit description and provide a commit count summary only.</p>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog--e"> <a class="anchor" href="#git-shortlog--e"></a>-e </dt>
+                <dt class="hdlist1" id="git-shortlog---email"> <a class="anchor" href="#git-shortlog---email"></a>--email </dt>
+                <dd>
+                <p>Show the email address of each author.</p>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog---formatltformatgt"> <a class="anchor" href="#git-shortlog---formatltformatgt"></a>--format[=&lt;format&gt;] </dt>
+                <dd>
+                <p>Instead of the commit subject, use some other information to
+                describe each commit.  <em>&lt;format&gt;</em> can be any string accepted
+                by the <code>--format</code> option of <em>git log</em>, such as <em>* [%h] %s</em>.
+                (See the "PRETTY FORMATS" section of <a href="/docs/git-log">git-log[1]</a>.)</p>
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>Each pretty-printed commit will be rewrapped before it is shown.</pre>
+                  </div>
+                </div>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog--c"> <a class="anchor" href="#git-shortlog--c"></a>-c </dt>
+                <dt class="hdlist1" id="git-shortlog---committer"> <a class="anchor" href="#git-shortlog---committer"></a>--committer </dt>
+                <dd>
+                <p>Collect and show committer identities instead of authors.</p>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog--wltwidthgtltindent1gtltindent2gt"> <a class="anchor" href="#git-shortlog--wltwidthgtltindent1gtltindent2gt"></a>-w[&lt;width&gt;[,&lt;indent1&gt;[,&lt;indent2&gt;]]] </dt>
+                <dd>
+                <p>Linewrap the output by wrapping each line at <code>width</code>.  The first
+                line of each entry is indented by <code>indent1</code> spaces, and the second
+                and subsequent lines are indented by <code>indent2</code> spaces. <code>width</code>,
+                <code>indent1</code>, and <code>indent2</code> default to 76, 6 and 9 respectively.</p>
+                <div class="paragraph">
+                  <p>If width is <code>0</code> (zero) then indent the lines of the output without wrapping
+                  them.</p>
+                </div>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog-ltrevisionrangegt"> <a class="anchor" href="#git-shortlog-ltrevisionrangegt"></a>&lt;revision range&gt; </dt>
+                <dd>
+                <p>Show only commits in the specified revision range.  When no
+                &lt;revision range&gt; is specified, it defaults to <code>HEAD</code> (i.e. the
+                whole history leading to the current commit).  <code>origin..HEAD</code>
+                specifies all the commits reachable from the current commit
+                (i.e. <code>HEAD</code>), but not from <code>origin</code>. For a complete list of
+                ways to spell &lt;revision range&gt;, see the "Specifying Ranges"
+                section of <a href="/docs/gitrevisions">gitrevisions[7]</a>.</p>
+                </dd>
+                <dt class="hdlist1" id="git-shortlog---ltpathgt82308203"> <a class="anchor" href="#git-shortlog---ltpathgt82308203"></a>[\--] &lt;path&gt;…​ </dt>
+                <dd>
+                <p>Consider only commits that are enough to explain how the files
+                that match the specified paths came to be.</p>
+                <div class="paragraph">
+                  <p>Paths may need to be prefixed with "-- " to separate them from
+                  options or the revision range, when confusion arises.</p>
+                </div>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="sect1">
+          <h2 id="_mapping_authors"><a class="anchor" href="#_mapping_authors"></a>MAPPING AUTHORS</h2>
+          <div class="sectionbody">
+            <div class="paragraph">
+              <p>The <code>.mailmap</code> feature is used to coalesce together commits by the same
+              person in the shortlog, where their name and/or email address was
+              spelled differently.</p>
+            </div>
+            <div class="paragraph">
+              <p>If the file <code>.mailmap</code> exists at the toplevel of the repository, or at
+              the location pointed to by the mailmap.file or mailmap.blob
+              configuration options, it
+              is used to map author and committer names and email addresses to
+              canonical real names and email addresses.</p>
+            </div>
+            <div class="paragraph">
+              <p>In the simple form, each line in the file consists of the canonical
+              real name of an author, whitespace, and an email address used in the
+              commit (enclosed by <em>&lt;</em> and <em>&gt;</em>) to map to the name. For example:</p>
+            </div>
+            <div class="openblock">
+              <div class="content">
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>Proper Name &lt;commit@email.xx&gt;</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>The more complex forms are:</p>
+            </div>
+            <div class="openblock">
+              <div class="content">
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>&lt;proper@email.xx&gt; &lt;commit@email.xx&gt;</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>which allows mailmap to replace only the email part of a commit, and:</p>
+            </div>
+            <div class="openblock">
+              <div class="content">
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>Proper Name &lt;proper@email.xx&gt; &lt;commit@email.xx&gt;</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>which allows mailmap to replace both the name and the email of a
+              commit matching the specified commit email address, and:</p>
+            </div>
+            <div class="openblock">
+              <div class="content">
+                <div class="literalblock">
+                  <div class="content">
+                    <pre>Proper Name &lt;proper@email.xx&gt; Commit Name &lt;commit@email.xx&gt;</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>which allows mailmap to replace both the name and the email of a
+              commit matching both the specified commit name and email address.</p>
+            </div>
+            <div class="paragraph">
+              <p>Example 1: Your history contains commits by two authors, Jane
+              and Joe, whose names appear in the repository under several forms:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre>Joe Developer &lt;joe@example.com&gt;
+            Joe R. Developer &lt;joe@example.com&gt;
+            Jane Doe &lt;jane@example.com&gt;
+            Jane Doe &lt;jane@laptop.(none)&gt;
+            Jane D. &lt;jane@desktop.(none)&gt;</pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Now suppose that Joe wants his middle name initial used, and Jane
+              prefers her family name fully spelled out. A proper <code>.mailmap</code> file
+              would look like:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre>Jane Doe         &lt;jane@desktop.(none)&gt;
+            Joe R. Developer &lt;joe@example.com&gt;</pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Note how there is no need for an entry for <code>&lt;jane@laptop.(none)&gt;</code>, because the
+              real name of that author is already correct.</p>
+            </div>
+            <div class="paragraph">
+              <p>Example 2: Your repository contains commits from the following
+              authors:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre>nick1 &lt;bugs@company.xx&gt;
+            nick2 &lt;bugs@company.xx&gt;
+            nick2 &lt;nick2@company.xx&gt;
+            santa &lt;me@company.xx&gt;
+            claus &lt;me@company.xx&gt;
+            CTO &lt;cto@coompany.xx&gt;</pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Then you might want a <code>.mailmap</code> file that looks like:</p>
+            </div>
+            <div class="listingblock">
+              <div class="content">
+                <pre>&lt;cto@company.xx&gt;                       &lt;cto@coompany.xx&gt;
+            Some Dude &lt;some@dude.xx&gt;         nick1 &lt;bugs@company.xx&gt;
+            Other Author &lt;other@author.xx&gt;   nick2 &lt;bugs@company.xx&gt;
+            Other Author &lt;other@author.xx&gt;         &lt;nick2@company.xx&gt;
+            Santa Claus &lt;santa.claus@northpole.xx&gt; &lt;me@company.xx&gt;</pre>
+              </div>
+            </div>
+            <div class="paragraph">
+              <p>Use hash <em>#</em> for comments that are either on their own line, or after
+              the email address.</p>
+            </div>
+          </div>
+        </div>
+        <div class="sect1">
+          <h2 id="_git"><a class="anchor" href="#_git"></a>GIT</h2>
+          <div class="sectionbody">
+            <div class="paragraph">
+              <p>Part of the <a href="/docs/git">git[1]</a> suite</p>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <!-- Sidebar links -->
+      <div class="dn db-l pt3 w-25-l">
+        <h3 class="f6 fw6">Setup and config</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git" class="link blue f6">git</a></li>
+          <li><a href="/docs/git-config" class="link blue f6">config</a></li>
+          <li><a href="/docs/git-help" class="link blue f6">help</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Getting and creating projects</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-init" class="link blue f6">init</a></li>
+          <li><a href="/docs/git-clone" class="link blue f6">clone</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Basic snapshotting</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-add" class="link blue f6">add</a></li>
+          <li><a href="/docs/git-status" class="link blue f6">status</a></li>
+          <li><a href="/docs/git-diff" class="link blue f6">diff</a></li>
+          <li><a href="/docs/git-commit" class="link blue f6">commit</a></li>
+          <li><a href="/docs/git-reset" class="link blue f6">reset</a></li>
+          <li><a href="/docs/git-rm" class="link blue f6">rm</a></li>
+          <li><a href="/docs/git-mv" class="link blue f6">mv</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Branching and merging</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-branch" class="link blue f6">branch</a></li>
+          <li><a href="/docs/git-checkout" class="link blue f6">checkout</a></li>
+          <li><a href="/docs/git-merge" class="link blue f6">merge</a></li>
+          <li><a href="/docs/git-mergetool" class="link blue f6">mergetool</a></li>
+          <li><a href="/docs/git-log" class="link blue f6">log</a></li>
+          <li><a href="/docs/git-stash" class="link blue f6">stash</a></li>
+          <li><a href="/docs/git-tag" class="link blue f6">tag</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Sharing and updating projects</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-fetch" class="link blue f6">fetch</a></li>
+          <li><a href="/docs/git-pull" class="link blue f6">pull</a></li>
+          <li><a href="/docs/git-push" class="link blue f6">push</a></li>
+          <li><a href="/docs/git-remote" class="link blue f6">remote</a></li>
+          <li><a href="/docs/git-submodule" class="link blue f6">submodule</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Inspection and comparison</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-show" class="link blue f6">show</a></li>
+          <li><a href="/docs/git-log" class="link blue f6">log</a></li>
+          <li><a href="/docs/git-diff" class="link blue f6">diff</a></li>
+          <li><a href="/docs/git-shortlog" class="link blue f6">shortlog</a></li>
+          <li><a href="/docs/git-describe" class="link blue f6">describe</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Patching</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-apply" class="link blue f6">apply</a></li>
+          <li><a href="/docs/git-cherry-pick" class="link blue f6">cherry-pick</a></li>
+          <li><a href="/docs/git-diff" class="link blue f6">diff</a></li>
+          <li><a href="/docs/git-rebase" class="link blue f6">rebase</a></li>
+          <li><a href="/docs/git-revert" class="link blue f6">revert</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Debugging</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-bisect" class="link blue f6">bisect</a></li>
+          <li><a href="/docs/git-blame" class="link blue f6">blame</a></li>
+          <li><a href="/docs/git-grep" class="link blue f6">grep</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Email</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-am" class="link blue f6">am</a></li>
+          <li><a href="/docs/git-apply" class="link blue f6">apply</a></li>
+          <li><a href="/docs/git-format-patch" class="link blue f6">format-patch</a></li>
+          <li><a href="/docs/git-send-email" class="link blue f6">send-email</a></li>
+          <li><a href="/docs/git-request-pull" class="link blue f6">request-pull</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">External systems</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-svn" class="link blue f6">svn</a></li>
+          <li><a href="/docs/git-fast-import" class="link blue f6">fast-import</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Server admin</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-daemon" class="link blue f6">daemon</a></li>
+          <li><a href="/docs/git-update-server-info" class="link blue f6">update-server-info</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Guides</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/gitattributes" class="link blue f6">gitattributes</a></li>
+          <li><a href="/docs/giteveryday" class="link blue f6">Everyday Git</a></li>
+          <li><a href="/docs/gitglossary" class="link blue f6">Glossary</a></li>
+          <li><a href="/docs/gitignore" class="link blue f6">gitignore</a></li>
+          <li><a href="/docs/gitmodules" class="link blue f6">gitmodules</a></li>
+          <li><a href="/docs/gitrevisions" class="link blue f6">Revisions</a></li>
+          <li><a href="/docs/gittutorial" class="link blue f6">Tutorial</a></li>
+          <li><a href="/docs/gitworkflows" class="link blue f6">Workflows</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Administration</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-clean" class="link blue f6">clean</a></li>
+          <li><a href="/docs/git-gc" class="link blue f6">gc</a></li>
+          <li><a href="/docs/git-fsck" class="link blue f6">fsck</a></li>
+          <li><a href="/docs/git-reflog" class="link blue f6">reflog</a></li>
+          <li><a href="/docs/git-filter-branch" class="link blue f6">filter-branch</a></li>
+          <li><a href="/docs/git-instaweb" class="link blue f6">instaweb</a></li>
+          <li><a href="/docs/git-archive" class="link blue f6">archive</a></li>
+          <li><a href="/docs/git-bundle" class="link blue f6">bundle</a></li>
+        </ul>
+
+        <h3 class="f6 fw6">Plumbing commands</h3>
+        <ul class="list pl0">
+          <li><a href="/docs/git-cat-file" class="link blue f6">cat-file</a></li>
+          <li><a href="/docs/git-check-ignore" class="link blue f6">check-ignore</a></li>
+          <li><a href="/docs/git-checkout-index" class="link blue f6">checkout-index</a></li>
+          <li><a href="/docs/git-commit-tree" class="link blue f6">commit-tree</a></li>
+          <li><a href="/docs/git-count-objects" class="link blue f6">count-objects</a></li>
+          <li><a href="/docs/git-diff-index" class="link blue f6">diff-index</a></li>
+          <li><a href="/docs/git-for-each-ref" class="link blue f6">for-each-ref</a></li>
+          <li><a href="/docs/git-hash-object" class="link blue f6">hash-object</a></li>
+          <li><a href="/docs/git-ls-files" class="link blue f6">ls-files</a></li>
+          <li><a href="/docs/git-merge-base" class="link blue f6">merge-base</a></li>
+          <li><a href="/docs/git-read-tree" class="link blue f6">read-tree</a></li>
+          <li><a href="/docs/git-rev-list" class="link blue f6">rev-list</a></li>
+          <li><a href="/docs/git-rev-parse" class="link blue f6">rev-parse</a></li>
+          <li><a href="/docs/git-show-ref" class="link blue f6">show-ref</a></li>
+          <li><a href="/docs/git-symbolic-ref" class="link blue f6">symbolic-ref</a></li>
+          <li><a href="/docs/git-update-index" class="link blue f6">update-index</a></li>
+          <li><a href="/docs/git-update-ref" class="link blue f6">update-ref</a></li>
+          <li><a href="/docs/git-verify-pack" class="link blue f6">verify-pack</a></li>
+          <li><a href="/docs/git-write-tree" class="link blue f6">write-tree</a></li>
+        </ul>
+      </div>
     </div>
+
   </body>
+  <script src="js/index.js"></script>
 </html>

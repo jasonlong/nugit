@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rimraf dist/{css/*,js/*}",
     "scss": "node-sass --output-style compressed -o dist css/index.scss",
-    "lint": "eslint src/js || true",
+    "lint": "eslint js || true",
     "serve": "browser-sync start --server --files \"dist/*.css, dist/*.js, **/*.html, !node_modules/**/*.html\"",
     "start": "serve .",
     "build:css": "run-s scss",
@@ -26,6 +26,7 @@
     "serve": "latest"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "browser-sync": "^2.12.8",
     "eslint": "^2.10.2",
     "eslint-config-standard": "^5.3.1",
