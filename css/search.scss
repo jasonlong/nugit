@@ -1,0 +1,20 @@
+.is-searching {
+  @extend .bg-black-03;
+
+  .site-logo,
+  .site-nav {
+    @extend .o-0;
+  }
+
+  .search-link-search {
+    @extend .dn;
+  }
+
+  .search-link-x {
+    @extend .db;
+  }
+
+  .search-box {
+    @extend .db;
+  }
+}
