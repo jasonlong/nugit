@@ -9,8 +9,8 @@
 /*
  * Background colors
  */
-.bg-black-03 { background-color: rgba( 0, 0, 0, .03 ); }
 .bg-tan { background-color: #f5f5f0; }
+.bg-dark-tan { background-color: #edede9; }
 .bg-orange { background-color: #ff6300; }
 .bg-blue { background-color: #357edd; }
 

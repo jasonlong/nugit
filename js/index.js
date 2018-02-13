@@ -12,4 +12,5 @@ const navLink = document.querySelector('.js-nav-link');
 navLink.addEventListener('click', function(e) {
   const siteNav = document.querySelector('.js-site-nav');
   siteNav.classList.toggle('dn');
+  e.target.closest('.js-site-header').classList.toggle('is-nav-open');
 }, false);

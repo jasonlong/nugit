@@ -1,5 +1,5 @@
 .is-searching {
-  @extend .bg-black-03;
+  @extend .bg-dark-tan;
 
   .site-logo,
   .site-nav {
@@ -16,5 +16,17 @@
 
   .search-box {
     @extend .db;
+  }
+}
+
+.is-nav-open {
+  @extend .bg-dark-tan;
+
+  .site-nav {
+    @extend .db;
+  }
+
+  .site-nav-links {
+    @extend .bg-dark-tan;
   }
 }
